@@ -61,7 +61,7 @@ function loadXMLDoc() {
       <ul class="nav navbar-nav">
         <li class="active"><a href="home.html">Home</a></li>
         <li><a href="wishlist.html">Wish List</a></li>
-       
+        
       </ul>
       <form class="navbar-form navbar-left" role="search" >
       <div class = "form-group">
@@ -77,31 +77,58 @@ function loadXMLDoc() {
 </nav>
 
 <div class="container">
-<div class="jumbotron">
-<h1>Wishlist Here</h1>
-<p>Here!</p></div>
+
+<h1>Registration</h1>
+<p>Here!</p>
 
 
 <div class="container" class="container-fluid">
-  <h3>BOOK</h3>
-  <br>
-  <form id="wishlist" class="form-horizontal" action ="wishlist.php" method="post" enctype="multipart/form-data" autocomplete="on">
-  <div class="row">
-    <div class="col-sm-2">
-      <img src="images/beauty_js.jpg" class="img-responsive" style="width:100%" alt="Image" >
-	  <button type="submit" name="i1" class="btn btn-info"  formaction="cart.php">Buy</button>
-	  <button type="submit" name="i1" class="btn btn-info">Add to Cart</button>
+  <form id="signup" class="form-horizontal" action ="registration1.php" method="post" enctype="multipart/form-data" autocomplete="on">
+  <!--display validation errors here-->
+      <div class="form-group" class="row">
+      
+      <div class="col-sm-10">
+	  <label>Username:</label>
+        <input type="text" name="username" class="form-control" id="username" placeholder="Enter username" value="">
+      </div>
+    </div>
+   
+    <div class="form-group">
+      
+      <div class="col-sm-10"> 
+        <label>Email:</label>	  
+        <input type="email" name="emailid" class="form-control" id="emailid" placeholder="abc@b-kart.com" value="">
     </div>
     </div>
+    
+    <div class="form-group">
+      
+      <div class="col-sm-10"> 
+        <label>Password:</label>	  
+        <input type="password" name="password" class="form-control" id="password" placeholder="Enter password">
+      </div>
+    </div>
+    
+    <div class="form-group">
+      
+      <div class="col-sm-10"> 
+        <label>Confirm Password:</label>	  
+        <input type="password" name="confpassword" class="form-control" id="confpassword" placeholder="Confirm password">
+      </div>
+    </div>
+    
+    <div class="form-group"> 
+       <div class="btn-group">   
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" name="register" class="btn btn-info">Register</button>
+      </div>
+  </div>
 </div>
-
+<p> Already a member? <a href="login.php">Sign in</a></p>
 </form>
 
 </div>
 
-<footer class="container-fluid text-center">
-  <p>Footer Text</p>
-</footer>
 
 </body>
 </html>

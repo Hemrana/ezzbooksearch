@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,23 +28,7 @@
     }
   </style>
 </head>
-
-<p id="rabbit"></p>
-
-<script>
-function loadXMLDoc() {
-  var xhttp = new XMLHttpRequest();// Creates XMLHttp request
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {//When readyState is 4 and status is 200, the response is ready
-      document.getElementById("rabbit").innerHTML = // response as a text string, using the responseText property
-      this.responseText;
-    }
-  };
-  xhttp.open("GET", "xmlhttp_info.txt", true);
-  xhttp.send();
-}
-</script>
-<body background="books.jpg"> 
+<body background="books.jpg">
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -55,13 +38,13 @@ function loadXMLDoc() {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="registration.php">Register </a>
+      <a class="navbar-brand" href="registration.php">Register</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="active"><a href="home.html">Home</a></li>
         <li><a href="wishlist.html">Wish List</a></li>
-       
+        
       </ul>
       <form class="navbar-form navbar-left" role="search" >
       <div class = "form-group">
@@ -78,30 +61,77 @@ function loadXMLDoc() {
 
 <div class="container">
 <div class="jumbotron">
-<h1>Wishlist Here</h1>
+<h1>Login Page</h1>
 <p>Here!</p></div>
 
-
+<?php
+			if(!(isset($_SESSION['username'])))
+			{ 
+			?>
 <div class="container" class="container-fluid">
-  <h3>BOOK</h3>
-  <br>
-  <form id="wishlist" class="form-horizontal" action ="wishlist.php" method="post" enctype="multipart/form-data" autocomplete="on">
-  <div class="row">
-    <div class="col-sm-2">
-      <img src="images/beauty_js.jpg" class="img-responsive" style="width:100%" alt="Image" >
-	  <button type="submit" name="i1" class="btn btn-info"  formaction="cart.php">Buy</button>
-	  <button type="submit" name="i1" class="btn btn-info">Add to Cart</button>
-    </div>
-    </div>
-</div>
+<form id="login" class="form-horizontal" action="login.php?page=login1" method="post" enctype="multipart/form-data" autocomplete="on">
+<div class="form-group" class="row">
+     
+      <div class="col-sm-10">
+	  <form  method="POST">
+	   <label>Username:</label>
+        <input type="text" name="username" class="form-control" id="username" placeholder="Enter username">
+        </div>
+      </div>
 
+	<div class="form-group">
+      
+      <div class="col-sm-10"> 
+        <label>Password:</label>	  
+        <input type="password" name="password" class="form-control" id="password" placeholder="Enter password">
+      </div>
+    </div>
+	<br>
+	<div class="form-group"> 
+       <div class="btn-group">   
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-warning" name="login">Login</button>
+      </div>
+  </div>
+	</div>
+	<p>
+		Not yet a member? <a href="registration.php">Sign up</a>
+	</p>
 </form>
-
 </div>
-
+<?php
+			}
+			?>
 <footer class="container-fluid text-center">
   <p>Footer Text</p>
 </footer>
 
 </body>
 </html>
+
+<?php
+	session_start();
+	//session_destroy();
+	require("connect.php");
+	if (isset($_GET['page']))
+	{
+		$pages=array("login","login1","registration");
+			if (in_array($_GET['page'],$pages))
+			{
+				$_page=$_GET['page'];
+			//echo "$_page";
+			}
+			else
+			{
+				$_page="books";
+			}
+	}
+	else
+	{
+		$_page="books";
+	}
+	
+?>
+
+
+
